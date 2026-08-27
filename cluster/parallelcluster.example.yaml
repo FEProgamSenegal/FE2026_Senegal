@@ -1,0 +1,28 @@
+# EXEMPLE ADMINISTRATEUR INCOMPLET — ne pas déployer sans revue sécurité/coût.
+# Remplacer région, AMI, sous-réseau et clé. Valider avec la version pcluster utilisée.
+Region: us-east-1
+Image:
+  Os: ubuntu2204
+HeadNode:
+  InstanceType: t3.small
+  Networking:
+    SubnetId: subnet-REPLACE_ME
+  Ssh:
+    KeyName: REPLACE_ME
+Scheduling:
+  Scheduler: slurm
+  SlurmQueues:
+    - Name: teaching
+      ComputeResources:
+        - Name: compute
+          Instances:
+            - InstanceType: c6i.large
+          MinCount: 0
+          MaxCount: 4
+      Networking:
+        SubnetIds:
+          - subnet-REPLACE_ME
+SharedStorage:
+  - MountDir: /shared
+    Name: course-ebs
+    StorageType: Ebs
