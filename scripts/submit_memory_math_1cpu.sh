@@ -5,6 +5,7 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=4G
 #SBATCH --time=00:10:00
+#SBATCH --partition=demo
 #SBATCH --output=memory_math_%j.out
 #SBATCH --error=memory_math_%j.err
 
